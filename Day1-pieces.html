@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Day1 Pieces</title>
+  <meta charset="utf-8"></meta>
+</head>
+
+<style>
+.arTemplate { display: none; }
+table,td { border: 1px solid black; border-collapse: collapse; }
+table { margin-left: 10px; }
+</style>
+
+<body>
+  <p id="pLog"></p>
+
+  <section id="articles">
+    <article class="arTemplate">
+      <header>
+        <h1>Title</h1>
+        <div class="byline">
+          published <time pubdate datetime="2000-01-01">Publish Time</time>
+        </div>
+      </header>
+      <section class="article-body">Body</section>
+    </article>
+  </section>
+
+  <script src="jquery-2.1.4.min.js"></script>
+  <script src="app.js"></script>
+  <script src="blogArticles.js"></script>
+  
+</body>
+
+</html>
