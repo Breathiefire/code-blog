@@ -45,10 +45,3 @@ blog.rawData.sort(function(one, two){
     return 1;
   return 0;
 });
-
-var ids = new Array();
-var hrefs = new Array();
-$('#ulList li').each(function(){
-  ids.push($(this).attr('id'));
-  hrefs.push($(this).find('a').attr('href'));
-})
