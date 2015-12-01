@@ -36,11 +36,11 @@ $(function() {
 
 //function to sort articles by most recent date. I adapted this from:
 //http://stackoverflow.com/questions/10123953/sort-javascript-object-array-by-date
-blog.rawData.sort(function(one, two){
-  var dateOne=one.publishedOn, dateTwo=two.publishedOn;
-  if (dateOne > dateTwo)
+blog.rawData.sort(function(a, b){
+  var dateA=a.publishedOn, dateB=b.publishedOn;
+  if (dateA > dateB)
     return -1;
-  if (dateOne < dateTwo)
+  if (dateA < dateB)
     return 1;
   return 0;
 });

@@ -5,10 +5,15 @@
 #articles {
   width: 90%;
   margin: auto;
+  margin-top: 15px;
 }
 
 header {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: 2em;
 }
 
 .byline {
@@ -16,6 +21,6 @@ header {
   font-size: .8em;
 }
 
-.pull-right {
-  width: 25%;
+.pull-right, .pull-left {
+  max-width: 340px;
 }
