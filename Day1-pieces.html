@@ -13,26 +13,27 @@ table { margin-left: 10px; }
 
 <body>
   <p id="pLog"></p>
-
   <section id="articles">
     <article class="arTemplate">
       <header>
         <h1>Title</h1>
-        <div class="byline"><p class='categoryLine'></p>
-          <p class='authorLine'></p>
-          <p class='authorURLline'></p>
+        <div class="byline">
+          Category: <span class='categoryLine'></span>
+          <br>
+          <em>Written by</em> <span class='authorURLline'></span>
+          <br>
           published <time pubdate datetime="2000-01-01">Publish Time</time>
-          <p class='publishedOnLine'></p>
+          on <span class='publishedOnLine'></span>
         </div>
       </header>
       <section class="article-body">Body</section>
     </article>
   </section>
 
-  <script src="jquery-2.1.4.min.js"></script>
-  <script src="blogObject.js"></script>
-  <script src="blogArticles.js"></script>
-  <script src="app.js"></script>
+  <script src="script/jquery-2.1.4.min.js"></script>
+  <script src="script/blogObject.js"></script>
+  <script src="script/blogArticles.js"></script>
+  <script src="script/app.js"></script>
 
 </body>
 

@@ -16,7 +16,7 @@ makeArticle.prototype.toHtml = function() {
   var $newArticle = $('article.arTemplate').clone();
   $newArticle.removeClass('arTemplate');
   $newArticle.find('h1').html(this.title);
-  $newArticle.find('.categoryline').html(this.category);
+  $newArticle.find('.categoryLine').html(this.category);
   $newArticle.find('.authorURLline').html('<a href="this.authorURL">'+this.author+'</a>');
   $newArticle.find('.publishedOnLine').html(this.publishedOn);
   $newArticle.find('time').html(parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
