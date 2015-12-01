@@ -8,7 +8,6 @@ function makeArticle(obj) {
   this.body = obj.body;
   var date = new Date(this.publishedOn);
   var today = new Date();
-  this.daysElapsed = Math.round((today - date) / 1000 / 60 / 60 / 24);
 }
 
 //Method to place article info into HTML

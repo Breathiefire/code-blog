@@ -1,0 +1,21 @@
+.arTemplate {
+  display: none;
+}
+
+#articles {
+  width: 90%;
+  margin: auto;
+}
+
+header {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.byline {
+  color: grey;
+  font-size: .8em;
+}
+
+.pull-right {
+  width: 25%;
+}
