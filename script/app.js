@@ -6,8 +6,6 @@ function makeArticle(obj) {
   this.authorUrl = obj.authorUrl;
   this.publishedOn = obj.publishedOn;
   this.body = obj.body;
-  var date = new Date(this.publishedOn);
-  var today = new Date();
 }
 
 //Method to place article info into HTML
@@ -27,20 +25,21 @@ makeArticle.prototype.toHtml = function() {
 //Pushes all articles through method to be placed in HTML
 $(function() {
   var dataSpace = [];
+  //function to sort articles by most recent date. I adapted this from:
+  //http://stackoverflow.com/questions/10123953/sort-javascript-object-array-by-date
+  blog.rawData.sort(function(a, b){
+    var dateA=a.publishedOn, dateB=b.publishedOn;
+    if (dateA > dateB)
+      return -1;
+    if (dateA < dateB)
+      return 1;
+    return 0;
+  });
     for (var i = 0; i < blog.rawData.length; i++) {
       dataSpace = new makeArticle(blog.rawData[i]);
       $('#articles').append(dataSpace.toHtml());
-        console.log(dataSpace);
   }
-});
-
-//function to sort articles by most recent date. I adapted this from:
-//http://stackoverflow.com/questions/10123953/sort-javascript-object-array-by-date
-blog.rawData.sort(function(a, b){
-  var dateA=a.publishedOn, dateB=b.publishedOn;
-  if (dateA > dateB)
-    return -1;
-  if (dateA < dateB)
-    return 1;
-  return 0;
+  $(".expand").on('click', function(){
+    console.log("Button is working");
+  });
 });
