@@ -21,31 +21,33 @@ makeArticle.prototype.toHtml = function() {
   $newArticle.find('.article-body').html(this.body);
   $newArticle.find('.article-body').children().not('p:first').hide();
   $newArticle.append('<hr>');
-  $("#authorMenu").append('<option value="'+this.author+'">'+this.author+'</option>');
-  $("#categoryMenu").append('<option value="'+this.category+'">'+this.category+'</option>');
   return $newArticle;
 }
+
+//Sort by most recent date
+blog.rawData.sort(sortByDate);
 
 //Pushes all articles through method to be placed in HTML
 $(function() {
   var dataArray = [];
-  //sorts articles by most recent date. I adapted this from:
-  //http://stackoverflow.com/questions/10123953/sort-javascript-object-array-by-date
-  blog.rawData.sort(function(a, b){
-    var dateA=a.publishedOn, dateB=b.publishedOn;
-    if (dateA > dateB)
-      return -1;
-    if (dateA < dateB)
-      return 1;
-    return 0;
-  });
   for (var i = 0; i < blog.rawData.length; i++) {
       dataArray = new makeArticle(blog.rawData[i]);
       $('#articles').append(dataArray.toHtml());
   }
+
       //shows rest of article on click
       $(".expand").on('click', function(){
           $(this).prev().children().show();
       });
+
+      // Create a dropdown list for Authors
+      blog.rawData.sort(sortByAuthor);
+      populateDropDown('author', '#authorMenu');
+
+      // Create a dropdown list for Categories
+      blog.rawData.sort(sortByCategory);
+      populateDropDown('category', '#CategoryMenu');
     });
+
+
 });
