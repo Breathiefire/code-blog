@@ -18,6 +18,7 @@ makeArticle.prototype.toHtml = function() {
   $newArticle.find('.publishedOnLine').html(this.publishedOn);
   $newArticle.find('time').html(parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
   $newArticle.find('.article-body').html(this.body);
+  $(".article-body").children().not("p:first").hide();
   $newArticle.append('<hr>');
   return $newArticle;
 }
@@ -39,7 +40,12 @@ $(function() {
       dataSpace = new makeArticle(blog.rawData[i]);
       $('#articles').append(dataSpace.toHtml());
   }
-  $(".expand").on('click', function(){
-    console.log("Button is working");
-  });
+  // $(".expand").on('click', function(){
+  //   console.log("Button is working");
+  // });
+  $(document).ready(function(){
+      $(".expand").on('click', function(){
+          $(this).prev().children().show();
+      });
+  })
 });
