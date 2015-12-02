@@ -1,3 +1,4 @@
+$(function() {
 // constructor object for the articles
 function makeArticle(obj) {
   this.title = obj.title;
@@ -18,15 +19,17 @@ makeArticle.prototype.toHtml = function() {
   $newArticle.find('.publishedOnLine').html(this.publishedOn);
   $newArticle.find('time').html(parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
   $newArticle.find('.article-body').html(this.body);
-  $(".article-body").children().not("p:first").hide();
+  $newArticle.find('.article-body').children().not('p:first').hide();
   $newArticle.append('<hr>');
+  $("#authorMenu").append('<option value="'+this.author+'">'+this.author+'</option>');
+  $("#categoryMenu").append('<option value="'+this.category+'">'+this.category+'</option>');
   return $newArticle;
 }
 
 //Pushes all articles through method to be placed in HTML
 $(function() {
-  var dataSpace = [];
-  //function to sort articles by most recent date. I adapted this from:
+  var dataArray = [];
+  //sorts articles by most recent date. I adapted this from:
   //http://stackoverflow.com/questions/10123953/sort-javascript-object-array-by-date
   blog.rawData.sort(function(a, b){
     var dateA=a.publishedOn, dateB=b.publishedOn;
@@ -36,16 +39,13 @@ $(function() {
       return 1;
     return 0;
   });
-    for (var i = 0; i < blog.rawData.length; i++) {
-      dataSpace = new makeArticle(blog.rawData[i]);
-      $('#articles').append(dataSpace.toHtml());
+  for (var i = 0; i < blog.rawData.length; i++) {
+      dataArray = new makeArticle(blog.rawData[i]);
+      $('#articles').append(dataArray.toHtml());
   }
-  // $(".expand").on('click', function(){
-  //   console.log("Button is working");
-  // });
-  $(document).ready(function(){
+      //shows rest of article on click
       $(".expand").on('click', function(){
           $(this).prev().children().show();
       });
-  })
+    });
 });

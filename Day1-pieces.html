@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Day1 Pieces</title>
+  <title>Kay's weird ass blog</title>
   <meta charset="utf-8"></meta>
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <select class="authorMenu">
-    <option value= ></option>
-  </select>
-    <section id="articles">
+  <nav class="nav">
+    <h1 id="home">Home</h1>
+    <h1 id="about">About</h1>
+  </nav>
+
+  <form>
+    <select id="authorMenu"></select>
+  </form>
+
+  <br>
+
+  <form>
+    <select id="categoryMenu"></select>
+  </form>
+
+  <section id="articles">
       <article class="arTemplate">
         <header>
           <h1>Title</h1>
@@ -26,9 +38,9 @@
           </div>
         </header>
         <section class="article-body">Body</section>
-        <button class="expand">[Read on...]</button>
+        <button class="expand">Read on...</button>
       </article>
-    </section>
+  </section>
   <script src="script/jquery-2.1.4.min.js"></script>
   <script src="script/blogObject.js"></script>
   <script src="script/blogArticles.js"></script>
