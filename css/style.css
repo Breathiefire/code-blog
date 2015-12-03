@@ -25,6 +25,7 @@ h1 {
   max-width: 340px;
 }
 
+
 nav {
   text-align: center;
   margin: 25px;
@@ -36,4 +37,12 @@ nav ul li {
   display: inline-block;
   padding-left: 15px;
   padding-right: 15px;
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00b300;
 }
