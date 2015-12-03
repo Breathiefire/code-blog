@@ -24,3 +24,12 @@ h1 {
 .pull-right, .pull-left {
   max-width: 340px;
 }
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00b300;
+}
