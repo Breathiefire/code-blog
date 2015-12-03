@@ -1,7 +1,6 @@
 * {
   text-decoration: none;
 }
-
 .arTemplate {
   display: none;
 }
@@ -12,6 +11,8 @@ background: -o-linear-gradient(right, #36CD97, #58AEE8); /* For Opera 11.1 to 12
 background: -moz-linear-gradient(right, #36CD97, #58AEE8); /* For Firefox 3.6 to 15 */
 background: linear-gradient(to right, #36CD97 , #58AEE8); /* Standard syntax (must be last) */
 border-radius: 10px;
+max-width: 95%;
+margin: auto;
 }
 
 nav {
@@ -23,7 +24,7 @@ nav {
 
 nav ul li {
   display: inline-block;
-  padding: 0 6% 0 6%;
+  padding: 0 4% 0 4%;
   color: #FFFFFF;
   font-size: 1.6em;
   font-family: Calibri, Arial, sans-serif
@@ -33,8 +34,16 @@ nav ul li:hover {
   font-weight: bolder;
 }
 
-a {
+nav a {
   color: #FFFFFF;
+}
+
+article a {
+  color: #58AEE8;
+}
+
+article a:hover {
+  color: #36CD97;
 }
 
 .filters {
@@ -52,7 +61,6 @@ a {
 }
 
 body {
-  width: 90%;
   margin: auto;
   margin-top: 15px;
 }
@@ -65,6 +73,10 @@ h1 {
   font-size: 2em;
 }
 
+#articles {
+  max-width: 80%;
+  margin: auto;
+}
 .byline {
   color: grey;
   font-size: .8em;
