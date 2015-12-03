@@ -1,5 +1,54 @@
+* {
+  text-decoration: none;
+}
+
 .arTemplate {
   display: none;
+}
+
+.navContainer {
+background: -webkit-linear-gradient(left, #36CD97 , #58AEE8); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(right, #36CD97, #58AEE8); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(right, #36CD97, #58AEE8); /* For Firefox 3.6 to 15 */
+background: linear-gradient(to right, #36CD97 , #58AEE8); /* Standard syntax (must be last) */
+border-radius: 10px;
+}
+
+nav {
+  text-align: center;
+  margin: 0px;
+  padding: 25px;
+
+}
+
+nav ul li {
+  display: inline-block;
+  padding: 0 6% 0 6%;
+  color: #FFFFFF;
+  font-size: 1.6em;
+  font-family: Calibri, Arial, sans-serif
+}
+
+nav ul li:hover {
+  font-weight: bolder;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+.filters {
+  text-align: center;
+  margin: 10px;
+}
+
+#articles, #aboutMe {
+  margin-top: 20px;
+}
+
+#aboutMe h3 {
+  font-size: 1.4em;
+  margin-bottom: 10px;
 }
 
 body {
@@ -23,17 +72,5 @@ h1 {
 
 .pull-right, .pull-left {
   max-width: 340px;
-}
-
-nav {
-  text-align: center;
-  margin: 25px;
-  padding: 25px;
-  background-color: #ffaa80;
-}
-
-nav ul li {
-  display: inline-block;
-  padding-left: 15px;
-  padding-right: 15px;
+  max-height: 340px;
 }
