@@ -75,7 +75,7 @@ $(function() {
         $categories.each(function(){
           var text = $(this).text();
           if(text===category){
-            $(this).parent().parent().parent().show();
+            $(this).closest('.article').show();
           }
         });
       });

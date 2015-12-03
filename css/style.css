@@ -1,48 +1,190 @@
-.arTemplate {
-  display: none;
+@media screen and (min-width: 300px) {
+  * {
+    text-decoration: none;
+  }
+  .arTemplate {
+    display: none;
+  }
+
+  body {
+    background-color: #E9E9E9;
+  }
+  .titleBox {
+  background: -webkit-linear-gradient(left, #36CD97 , #58AEE8); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #36CD97, #58AEE8); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #36CD97, #58AEE8); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #36CD97 , #58AEE8); /* Standard syntax (must be last) */
+  max-width: 100%;
+  height: 150px;
+  }
+
+  .titleBox h1 {
+    color: #FFFFFF;
+    font-size: 2.5em;
+    font-family: Calibri, Arial, sans-serif;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  nav a {
+    color: gray;
+  }
+
+  ul {
+    position: relative;
+    top: -25px;
+  }
+
+  #leftNavBox {
+    display: inline-block;
+    background-color: #FFFFFF;
+    border: #FFFFFF 2px solid;
+    height: 45px;
+    width: 90px;
+    border-radius: 5px;
+    margin-right: 5%;
+    top: 30px;
+  }
+
+  #leftNavBox:hover {
+  border: #58AEE8 2px solid;
+  }
+
+  #middleNavBox {
+    display: inline-block;
+    background-color: #FFFFFF;
+    border: #FFFFFF 2px solid;
+    height: 45px;
+    width: 90px;
+    border-radius: 5px;
+  }
+
+  #middleNavBox:hover {
+  border: #FEC5FC 2px solid;
+  }
+
+  #rightNavBox {
+    display: inline-block;
+    background-color: #FFFFFF;
+    border: #FFFFFF 2px solid;
+    height: 45px;
+    width: 90px;
+    border-radius: 5px;
+    margin-left: 5%;
+  }
+
+  #rightNavBox:hover {
+  border: #36CD97 2px solid;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  nav ul li {
+    color: black;
+    font-size: 1.4em;
+    font-family: Calibri, Arial, sans-serif;
+    padding-top: 7px;
+  }
+
+  article a {
+    color: #58AEE8;
+  }
+
+  article a:hover {
+    color: #36CD97;
+  }
+
+  .filters {
+    text-align: center;
+    margin: 10px;
+  }
+
+  #articles, #aboutMe {
+    margin-top: 20px;
+  }
+
+  #aboutMe h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  #articles {
+    max-width: 80%;
+    margin: auto;
+  }
+  .byline {
+    color: grey;
+    font-size: .8em;
+  }
+
+  .pull-right, .pull-left {
+    max-width: 340px;
+    max-height: 340px;
+  }
 }
 
-body {
-  width: 90%;
-  margin: auto;
-  margin-top: 15px;
-}
+@media screen and (min-width: 900px) {
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+  .titleBox h1 {
+    color: #FFFFFF;
+    font-size: 2.5em;
+    font-family: Calibri, Arial, sans-serif;
+    padding: 90px 0 0 100px;
+    text-align: left;
+  }
 
-h1 {
-  font-size: 2em;
-}
+  body {
+    background-color: #E9E9E9;
+  }
 
-.byline {
-  color: grey;
-  font-size: .8em;
-}
+  #leftNavBox, #middleNavBox, #rightNavBox {
+    background: none;
+    border: none;
+    margin: 0px;
 
-.pull-right, .pull-left {
-  max-width: 340px;
-}
+  }
 
+  #leftNavBox:hover {
+    border: none;
+  }
 
-nav {
-  text-align: center;
-  margin: 25px;
-  padding: 25px;
-  background-color: #ffaa80;
-}
+  #middleNavBox:hover {
+    border: none;
+  }
 
-nav ul li {
-  display: inline-block;
-  padding-left: 15px;
-  padding-right: 15px;
+  #rightNavBox:hover {
+    border: none;
+  }
 
-a {
-  color: grey;
-  text-decoration: none;
-}
+  nav a {
+    color: #FFFFFF;
+  }
 
-a:hover {
-  color: #00b300;
+  nav {
+    text-align: right;
+    max-width: 90%;
+    top: -30px;
+  }
+
+  ul {
+    position: relative;
+    top: -50px;
+  }
+
+  nav li a:hover {
+    text-shadow: 1px 1px 9px #000000;
+  }
+
+ .filters {
+   text-align: left;
+   max-width: 80%;
+   margin: auto;
+   margin-bottom: 10px;
+ }
 }

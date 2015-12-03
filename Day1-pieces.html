@@ -2,25 +2,32 @@
 <html lang="en">
 <head>
   <title>Kay's weird ass blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8"></meta>
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
+<div class="titleBox">
+  <h1>Articles for your eyes</h1>
+</div>
   <nav class="nav">
     <ul>
-        <li id="home">Blog</li>
-        <li id="about">About</li>
-        <li><a id="twitter" href="https://twitter.com/KayOuchida">Twitter</a></li>
+        <div id= 'leftNavBox'>
+          <li id="home"><a href='#'>Blog</a></li>
+        </div>
+        <div id= 'middleNavBox'>
+          <li id="about"><a href='#'>About</a></li>
+        </div>
+        <div id= 'rightNavBox'>
+          <li><a id="twitter" href="https://twitter.com/KayOuchida">Twitter</a></li>
+        </div>
       </ul>
   </nav>
-
   <div class="filters">
     <select id="authorMenu">
       <option value="default" selected>Authors</option>
     </select>
-  <br>
     <select id="categoryMenu">
       <option value="default" selected>Categories</option>
     </select>
@@ -30,7 +37,7 @@
     <h3>About Kay</h3>
     <p>Hello! This is my blog where I post really random stuff that makes no sense!!!</p>
   </section>
-  
+
   <section id="articles">
       <article class="arTemplate">
         <header>
