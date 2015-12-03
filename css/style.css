@@ -24,3 +24,16 @@ h1 {
 .pull-right, .pull-left {
   max-width: 340px;
 }
+
+nav {
+  text-align: center;
+  margin: 25px;
+  padding: 25px;
+  background-color: #ffaa80;
+}
+
+nav ul li {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}

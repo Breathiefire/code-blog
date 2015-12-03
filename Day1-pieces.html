@@ -7,26 +7,30 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+
   <nav class="nav">
     <ul>
-        <li><a id="home">Home</a></li>
-        <li><a id="about">About</a></li>
+        <li id="home">Blog</li>
+        <li id="about">About</li>
         <li><a id="twitter" href="https://twitter.com/KayOuchida">Twitter</a></li>
       </ul>
-      <section id="aboutMe">
-        <h3>About Kay</h3>
-        <p>Hello! This is my blog where I post really random stuff that makes no sense!!!</p>
-      </section>
   </nav>
+
   <div class="filters">
     <select id="authorMenu">
-      <option><Authors</option>
+      <option value="default" selected>Authors</option>
     </select>
   <br>
-    <select id="CategoryMenu">
-      <option><Categories</option>
+    <select id="categoryMenu">
+      <option value="default" selected>Categories</option>
     </select>
   </div>
+
+  <section id="aboutMe">
+    <h3>About Kay</h3>
+    <p>Hello! This is my blog where I post really random stuff that makes no sense!!!</p>
+  </section>
+  
   <section id="articles">
       <article class="arTemplate">
         <header>
@@ -35,6 +39,7 @@
             Category: <span class='categoryLine'></span>
             <br>
             <br>
+            <p class="author"></p>
             <em>Written by</em> <span class='authorURLline'></span>
             published <time pubdate datetime="2000-01-01">Publish Time</time>
             on <span class='publishedOnLine'></span>

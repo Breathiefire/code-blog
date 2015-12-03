@@ -1,14 +1,7 @@
-//Sort by author
+//Sort by author in alphabetical order
 var sortByAuthor = function(a, b) {
   if (a.author > b.author) {return 1;}
   if (a.author < b.author) {return -1;}
-  return 0;
-};
-
-//Sort by reverse author
-var sortByReverseAuthor = function(a, b) {
-  if (a.author < b.author) {return 1;}
-  if (a.author > b.author) {return -1;}
   return 0;
 };
 
@@ -19,13 +12,15 @@ var sortByDate = function(a, b) {
   return 0;
 };
 
+//Sort by category in alphabetical order
 var sortByCategory = function(a, b) {
   if (a.publishedOn > b.publishedOn) { return 1; }
   if (a.publishedOn < b.publishedOn) { return -1; }
   return 0;
 };
 
-//Populates section with what ever you pass into it
+
+//Populates section with what ever you pass into it. Adapted from Whitney
 function populateDropDown(theType, sectionId) {
   var list = [];
   for(var ii = 0; ii < blog.rawData.length; ii++) {
