@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> </title>
+    <meta charset="utf-8"> </meta>
+  </head>
+
+  <body>
+    <h1> Post New Article </h1>
+
+    <div class="articleContent">
+
+      <h2> Title </h2>
+      <textarea id="articleTitle" class="textStyle"> # Title </textarea>
+
+      <h2> Category </h2>
+      <textarea id="articleCategory" class="textStyle"> # Category </textarea>
+
+      <h2> Author </h2>
+      <textarea id="articleAuthor" class="textStyle"> # Author </textarea>
+
+      <h2> Body </h2>
+      <textarea id="articleBody" class="textStyle"> # Body </textarea>
+
+    </div>
+
+    <div class="output">
+      <h2> Raw HTML output </h2>
+      <p id="htmlRawOutput" class="paragraphStyle"> </p>
+    </div>
+
+    <div class="output">
+      <h2> Markdown Output </h2>
+      <p id="markdownOutput" class="paragraphStyle"> </p>
+    </div>
+
+    <div class="output">
+      <h2> JSON Object </h2>
+      <p id="json" class="paragraphStyle"> </p>
+    </div>
+
+    <script src="script/jquery-2.1.4.min.js"></script>
+    <script src="script/marked.min.js"></script>
+    <script src="script/render.js"></script>
+
+  </body>
+
+</html>
