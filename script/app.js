@@ -1,46 +1,59 @@
 $(function() {
-// constructor object for the articles
-function makeArticle(obj) {
-  this.title = obj.title;
-  this.category = obj.category;
-  this.author = obj.author;
-  this.authorUrl = obj.authorUrl;
-  this.publishedOn = obj.publishedOn;
-  this.body = obj.body;
+
+// // constructor object for the articles
+// function makeArticle(obj) {
+//   this.title = obj.title;
+//   this.category = obj.category;
+//   this.author = obj.author;
+//   this.authorUrl = obj.authorUrl;
+//   this.publishedOn = obj.publishedOn;
+//   this.body = obj.body;
+// }
+//
+// //Method to place article info into HTML
+// makeArticle.prototype.toHtml = function() {
+//   var $newArticle = $('article.arTemplate').clone();
+//   $newArticle.removeClass('arTemplate');
+//   $newArticle.addClass('article');
+//   $newArticle.find('h1').html(this.title);
+//   $newArticle.find('.categoryLine').html(this.category);
+//   $newArticle.find('.author').html(this.author);
+//   $newArticle.find('.authorURLline').html('<a href="this.authorURL">'+this.author+'</a>');
+//   $newArticle.find('.publishedOnLine').html(this.publishedOn);
+//   $newArticle.find('time').html(parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
+//   $newArticle.find('.article-body').html(this.body);
+//   $newArticle.find('.articleBody').children().not('p:first').hide();
+//   $newArticle.append('<hr>');
+//   return $newArticle;
+// }
+
+var templateInfo = $('#arTemplate').html();
+var compilesTemplate = Handlebars.compile(templateInfo);
+for (var ii = 0; ii < blog.rawData.length; ii++) {
+  var articleData = compilesTemplate(blog.rawData[ii]);
+  $('#articleLocation').append(articleData);
 }
 
-//Method to place article info into HTML
-makeArticle.prototype.toHtml = function() {
-  var $newArticle = $('article.arTemplate').clone();
-  $newArticle.removeClass('arTemplate');
-  $newArticle.addClass('article');
-  $newArticle.find('h1').html(this.title);
-  $newArticle.find('.categoryLine').html(this.category);
-  $newArticle.find('.author').html(this.author);
-  $newArticle.find('.authorURLline').html('<a href="this.authorURL">'+this.author+'</a>');
-  $newArticle.find('.publishedOnLine').html(this.publishedOn);
-  $newArticle.find('time').html(parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
-  $newArticle.find('.article-body').html(this.body);
-  $newArticle.find('.article-body').children().not('p:first').hide();
-  $newArticle.append('<hr>');
-  return $newArticle;
-}
+$('.articleBody').each(function(){
+   $(this).children().not('p:first').hide();
+ });
 
 //Sort by most recent date
 blog.rawData.sort(sortByDate);
 
 //Pushes all articles through method to be placed in HTML
 $(function() {
-  var dataArray = [];
-  for (var i = 0; i < blog.rawData.length; i++) {
-      dataArray = new makeArticle(blog.rawData[i]);
-      $('#articles').append(dataArray.toHtml());
-  }
+  // var dataArray = [];
+  // for (var i = 0; i < blog.rawData.length; i++) {
+  //     dataArray = new makeArticle(blog.rawData[i]);
+  //     $('#articles').append(dataArray.toHtml());
+  // }
 
       //shows rest of article on click
       $(".expand").on('click', function(){
           $(this).prev().children().show();
       });
+
 
       // Create a dropdown list for Authors. Adapted from Whitney
       blog.rawData.sort(sortByAuthor);
@@ -54,13 +67,12 @@ $(function() {
       $('#authorMenu').on('change', function(){
         var author = $(this).val();
         var $article = $('.article');
-        console.log(author);
         $article.hide();
         var $authors = $('.author');
         $authors.each(function(){
           var text = $(this).text();
           if(text===author){
-            $(this).parent().parent().parent().show();
+            $(this).closest('.article').show();
           }
         });
       });
@@ -69,7 +81,6 @@ $(function() {
       $('#categoryMenu').on('change',function(){
         var category = $(this).val();
         var $articles = $('.article');
-        console.log(category);
         $articles.hide();
         var $categories = $('.categoryLine');
         $categories.each(function(){

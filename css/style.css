@@ -8,6 +8,7 @@
 
   body {
     background-color: #E9E9E9;
+    min-height: 700px;
   }
   .titleBox {
   background: -webkit-linear-gradient(left, #36CD97 , #58AEE8); /* For Safari 5.1 to 6.0 */
@@ -103,6 +104,8 @@
 
   #articles, #aboutMe {
     margin-top: 20px;
+    max-width: 80%;
+    margin: auto;
   }
 
   #aboutMe h3 {
@@ -114,10 +117,6 @@
     font-size: 2em;
   }
 
-  #articles {
-    max-width: 80%;
-    margin: auto;
-  }
   .byline {
     color: grey;
     font-size: .8em;

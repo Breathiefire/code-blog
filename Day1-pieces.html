@@ -6,8 +6,15 @@
   <meta charset="utf-8"></meta>
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
+
+  <script id='test' type='text/x-handlebars-template'>
+      This is an author {{author}}
+  </script>
 </head>
 <body>
+  <div id='authorTest'></div>
+
 <div class="titleBox">
   <h1>Articles for your eyes</h1>
 </div>
@@ -37,28 +44,31 @@
     <h3>About Kay</h3>
     <p>Hello! This is my blog where I post really random stuff that makes no sense!!!</p>
   </section>
-
+ <script id="arTemplate" type="text/x-handlebars-template">
   <section id="articles">
-      <article class="arTemplate">
+      <article class="article">
         <header>
-          <h1>Title</h1>
+          <h1>{{{title}}}</h1>
           <div class="byline">
-            Category: <span class='categoryLine'></span>
+            <span class='categoryLine'>Category: {{{category}}}</span>
             <br>
             <br>
-            <p class="author"></p>
-            <em>Written by</em> <span class='authorURLline'></span>
-            published <time pubdate datetime="2000-01-01">Publish Time</time>
-            on <span class='publishedOnLine'></span>
+            <span>Written by</span>
+            <a class="author" href="{{{authorUrl}}}">{{{author}}}</a>
+            <br>
+            <time>Published on {{publishedOn}}</time>
             <br>
             <br>
           </div>
         </header>
-        <section class="article-body">Body</section>
+        <section class="articleBody">{{{body}}}</section>
         <button class="expand">Read on...</button>
       </article>
   </section>
+</script>
+<div id='articleLocation'></div>
   <script src="script/jquery-2.1.4.min.js"></script>
+  <script src="script/handlebars-v4.0.5.js"></script>
   <script src="script/blogObject.js"></script>
   <script src="script/blogArticles.js"></script>
   <script src= "script/util.js"></script>
