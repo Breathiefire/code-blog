@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title> </title>
+    <meta charset="utf-8"> </meta>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+
+  <body>
+    <h1> Post New Article </h1>
+
+    <div class="articleContent">
+
+      <h2> Title:  <input type="text" id="articleTitle" class="testStyle"> </h2>
+
+      <h2> Category:  <input type="text" id="articleCategory" class="testStyle"> </h2>
+
+      <h2> Author:  <input type="text" id="articleAuthor" class="testStyle"> </h2>
+
+      <h2> Body </h2>
+      <textarea id="articleBody" class="textStyle"> # Body </textarea>
+
+    </div>
+
+    <div class="output">
+      <h2> Raw HTML output </h2>
+      <p id="htmlRawOutput" class="paragraphStyle"> </p>
+    </div>
+
+    <div class="output">
+      <h2> Markdown Output </h2>
+      <p id="markdownOutput" class="paragraphStyle"> </p>
+    </div>
+
+    <div class="output">
+      <h2> JSON Object </h2>
+      <p id="json" class="paragraphStyle"> </p>
+    </div>
+
+    <script id="arTemplate" type="text/x-handlebars-template">
+     <section id="articles">
+         <article class="article">
+           <header>
+             <h1>{{title}}</h1>
+             <div class="byline">
+               Category: <span class='categoryLine'>{{category}}</span>
+               <br>
+               <br>
+               <span>Written by</span>
+               <a class="author" href="{{{authorUrl}}}">{{author}}</a>
+               <br>
+               <time>Published on {{publishedOn}}</time>
+               <br>
+               <br>
+             </div>
+           </header>
+           <section class="articleBody">{{{body}}}</section>
+         </article>
+     </section>
+   </script>
+
+    <script src="script/jquery-2.1.4.min.js"></script>
+    <script src="script/handlebars-v4.0.5.js"></script>
+    <script src="script/marked.min.js"></script>
+    <script src="script/render.js"></script>
+
+  </body>
+
+</html>
