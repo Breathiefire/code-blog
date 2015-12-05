@@ -15,7 +15,7 @@
 <body>
   <div id='authorTest'></div>
 
-<div class="titleBox">
+<div class="headerGradient">
   <h1>Articles for your eyes</h1>
 </div>
   <nav class="nav">
@@ -48,13 +48,13 @@
   <section id="articles">
       <article class="article">
         <header>
-          <h1>{{{title}}}</h1>
+          <h1>{{title}}</h1>
           <div class="byline">
-            <span class='categoryLine'>Category: {{{category}}}</span>
+            Category: <span class='categoryLine'>{{category}}</span>
             <br>
             <br>
             <span>Written by</span>
-            <a class="author" href="{{{authorUrl}}}">{{{author}}}</a>
+            <a class="author" href="{{authorUrl}}">{{author}}</a>
             <br>
             <time>Published on {{publishedOn}}</time>
             <br>
