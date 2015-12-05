@@ -29,6 +29,8 @@ $(function() {
 
 var templateInfo = $('#arTemplate').html();
 var compilesTemplate = Handlebars.compile(templateInfo);
+//Sort by most recent date
+blog.rawData.sort(sortByDate);
 for (var ii = 0; ii < blog.rawData.length; ii++) {
   var articleData = compilesTemplate(blog.rawData[ii]);
   $('#articleLocation').append(articleData);
@@ -38,8 +40,7 @@ $('.articleBody').each(function(){
    $(this).children().not('p:first').hide();
  });
 
-//Sort by most recent date
-blog.rawData.sort(sortByDate);
+
 
 //Pushes all articles through method to be placed in HTML
 $(function() {
@@ -48,6 +49,8 @@ $(function() {
   //     dataArray = new makeArticle(blog.rawData[i]);
   //     $('#articles').append(dataArray.toHtml());
   // }
+
+
 
       //shows rest of article on click
       $(".expand").on('click', function(){
