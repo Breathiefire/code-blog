@@ -10,7 +10,12 @@
     background-color: #E9E9E9;
     min-height: 700px;
   }
-  .titleBox {
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .headerGradient {
   background: -webkit-linear-gradient(left, #36CD97 , #58AEE8); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(right, #36CD97, #58AEE8); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(right, #36CD97, #58AEE8); /* For Firefox 3.6 to 15 */
@@ -19,7 +24,7 @@
   height: 150px;
   }
 
-  .titleBox h1 {
+  .headerGradient h1 {
     color: #FFFFFF;
     font-size: 2.5em;
     font-family: Calibri, Arial, sans-serif;
@@ -113,10 +118,6 @@
     margin-bottom: 10px;
   }
 
-  h1 {
-    font-size: 2em;
-  }
-
   .byline {
     color: grey;
     font-size: .8em;
@@ -130,16 +131,12 @@
 
 @media screen and (min-width: 900px) {
 
-  .titleBox h1 {
+  .headerGradient h1 {
     color: #FFFFFF;
     font-size: 2.5em;
     font-family: Calibri, Arial, sans-serif;
     padding: 90px 0 0 100px;
     text-align: left;
-  }
-
-  body {
-    background-color: #E9E9E9;
   }
 
   #leftNavBox, #middleNavBox, #rightNavBox {
@@ -161,14 +158,14 @@
     border: none;
   }
 
-  nav a {
-    color: #FFFFFF;
-  }
-
   nav {
     text-align: right;
     max-width: 90%;
     top: -30px;
+  }
+
+  nav a {
+    color: #FFFFFF;
   }
 
   ul {
