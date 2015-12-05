@@ -16,7 +16,7 @@ $(function() {
 
     var convertBody = marked(bodyValue);
     $htmlRawOutput.text(convertBody);
-    $markdownOutput.html(convertBody);
+
 
     var currentDate = new Date();
     console.log(currentDate);
@@ -25,6 +25,12 @@ $(function() {
     jsonObject.publishedOn = currentDate.getFullYear() + '-' + (currentDate.getMonth()+1) + '-' + (currentDate.getDay()-1);
     jsonObject.author = authorValue;
     jsonObject.body = convertBody;
+    console.log(jsonObject);
+
+    var templateInfo = $('#arTemplate').html();
+    var compilesTemplate = Handlebars.compile(templateInfo);
+    var articleData = compilesTemplate(jsonObject);
+    $markdownOutput.html(articleData);
 
     var jsonString = $json.text(JSON.stringify(jsonObject));
   }
