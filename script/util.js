@@ -20,7 +20,7 @@ var sortByCategory = function(a, b) {
 };
 
 
-//Populates section with what ever you pass into it. Adapted from Whitney
+//Populates select menu with what ever you pass into it. Adapted from Whitney
 function populateDropDown(theType, sectionId) {
   var list = [];
   for(var ii = 0; ii < blog.rawData.length; ii++) {

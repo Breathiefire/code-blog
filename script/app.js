@@ -54,7 +54,8 @@ $(function() {
 
         //shows rest of article on click
     $('.expand').on('click', function(){
-      $(this).prev().children().show();
+      $(this).prev().children().fadeToggle();
+      $(this).html('Read less...');
     });
 
 
