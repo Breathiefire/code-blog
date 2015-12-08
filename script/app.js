@@ -7,29 +7,40 @@ function usingAjax() {
     success: function(data, status, xhr){
       var eTag = (xhr.getResponseHeader('eTag'));
       console.log(eTag);
-      localStorage.setItem('ergodicEtag', eTag);
+      var localEtag = localStorage.setItem('ergodicEtag', eTag);
+      if (localEtag != eTag) {
+        //run get JSON
+      }
     }
   });
 }
 
 usingAjax();
-  //If local eTag is equal to new eTag then use cached json objects
-  //If local eTag is not equal to new eTag then refresh page
 
+//gets json object and sets to local storage
+$.getJSON('script/blogArticles.JSON', function(data) {
+  localStorage.setItem("blogData", JSON.stringify(data));
+  var rawData = JSON.parse(localStorage.getItem("blogData"));
+  console.log(rawData);
 
   $.get('template.html', function(data) {
 
     //compiles templates using Handlebars
     var compilesTemplate = Handlebars.compile(data);
     //Sort by most recent date
-    blog.rawData.sort(sortByDate);
+    rawData.sort(sortByDate);
 
     //Loops through blog objects and appends them to #articleLocation
-    for (var ii = 0; ii < blog.rawData.length; ii++) {
-      var articleData = compilesTemplate(blog.rawData[ii]);
+    for (var ii = 0; ii < rawData.length; ii++) {
+      var articleData = compilesTemplate(rawData[ii]);
       $('#articleLocation').append(articleData);
     }
   });
+})
+  //If local eTag is equal to new eTag then use cached json objects
+  //If local eTag is not equal to new eTag then refresh page
+
+
 
   $('.articleBody').each(function(){
   $(this).children().not('p:first').hide();
