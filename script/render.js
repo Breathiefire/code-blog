@@ -27,12 +27,17 @@ $(function() {
     jsonObject.body = convertBody;
     console.log(jsonObject);
 
-    var templateInfo = $('#arTemplate').html();
-    var compilesTemplate = Handlebars.compile(templateInfo);
-    var articleData = compilesTemplate(jsonObject);
-    $markdownOutput.html(articleData);
 
-    var jsonString = $json.text(JSON.stringify(jsonObject));
+    $.get('template.html', function(data) {
+      console.log(data);
+      //compiles templates using Handlebars
+      var compilesTemplate = Handlebars.compile(data);
+      console.log(compilesTemplate);
+      var articleData = compilesTemplate(jsonObject);
+      $markdownOutput.html(articleData);
+      var jsonString = $json.text(JSON.stringify(jsonObject));
+
+    });
   }
 
   $articleTitle.on('input', render);

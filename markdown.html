@@ -19,7 +19,7 @@
       <h2> Author:  <input type="text" id="articleAuthor" class="testStyle"> </h2>
 
       <h2> Body </h2>
-      <textarea id="articleBody" class="textStyle"> # Body </textarea>
+      <textarea id="articleBody" class="textStyle"></textarea>
 
     </div>
 
@@ -38,32 +38,13 @@
       <p id="json" class="paragraphStyle"> </p>
     </div>
 
-    <script id="arTemplate" type="text/x-handlebars-template">
-     <section id="articles">
-         <article class="article">
-           <header>
-             <h1>{{title}}</h1>
-             <div class="byline">
-               Category: <span class='categoryLine'>{{category}}</span>
-               <br>
-               <br>
-               <span>Written by</span>
-               <a class="author" href="{{{authorUrl}}}">{{author}}</a>
-               <br>
-               <time>Published on {{publishedOn}}</time>
-               <br>
-               <br>
-             </div>
-           </header>
-           <section class="articleBody">{{{body}}}</section>
-         </article>
-     </section>
-   </script>
+    <script id="arTemplate" type="text/x-handlebars-template"></script>
 
     <script src="script/jquery-2.1.4.min.js"></script>
     <script src="script/handlebars-v4.0.5.js"></script>
     <script src="script/marked.min.js"></script>
     <script src="script/render.js"></script>
+    <script src="script/app.js"></script>
 
   </body>
 
