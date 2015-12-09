@@ -1,3 +1,4 @@
+
 $(function() {
 
 function usingAjax() {
@@ -14,7 +15,6 @@ function usingAjax() {
         if (localEtag != eTag) {
           console.log("eTag doesn't match");
           getJsonData(eTag);
-          renderArticles()
           console.log("loaded from JSON");
         } else {
           console.log("Etags match");
@@ -25,7 +25,6 @@ function usingAjax() {
       } else {
         console.log("no etag here");
         getJsonData(eTag);
-        renderArticles()
       }
     }
   });
@@ -33,59 +32,81 @@ function usingAjax() {
 
 usingAjax();
 
-var rawData;
+var convertMarkdown = function(x) {
+  for (ii = 0; ii < x.length; ii++) {
+    if (x[ii].markdown) {
+      x[ii].body = marked(x[ii].markdown);
+    }
+  }
+  return x;
+};
+
+
 //gets json object and sets to local storage
 function getJsonData(etagspot) {
   $.getJSON('script/blogArticles.JSON', function(data) {
     localStorage.setItem("blogData", JSON.stringify(data));
-    rawData = JSON.parse(localStorage.getItem("blogData"));
+    rawData = JSON.parse(localStorage.getItem('blogData'));
+    // rawData = JSON.parse(localStorage.getItem("blogData"));
     localStorage.setItem('ergodicEtag', etagspot)
-    console.log(rawData);
+    renderArticles();
 
   })
 }
 
 function getLocalCache() {
   rawData = JSON.parse(localStorage.getItem("blogData"));
-  console.log(rawData);
 }
 
 function renderArticles(object) {
+var markedRawData = convertMarkdown(rawData);
+  console.log('Marked data: ', markedRawData[0]);
   $.get('template.html', function(data) {
-    //compiles templates using Handlebars
-    var compilesTemplate = Handlebars.compile(data);
-    //Sort by most recent date
-    rawData.sort(sortByDate);
-
     //Loops through blog objects and appends them to #articleLocation
     for (var ii = 0; ii < rawData.length; ii++) {
-      var articleData = compilesTemplate(rawData[ii]);
+      //compiles templates using Handlebars
+      var compilesTemplate = Handlebars.compile(data);
+      //Sort by most recent date
+      rawData.sort(sortByDate);
+
+      var articleData = compilesTemplate(markedRawData[ii]);
       $('#articleLocation').append(articleData);
     }
+
+    populateDropDown('author', '#authorMenu');
+    populateDropDown('category', '#categoryMenu');
+    aboutEvent();
+    authorEvent();
+    //Highlight function
+    $(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });
   });
 }
 
+      $('.articleBody').each(function(){
+        $(this).children().not('p:first').hide();
+      });
+      //Pushes all articles through method to be placed in HTML
 
-  $('.articleBody').each(function(){
-  $(this).children().not('p:first').hide();
-});
-
-  //Pushes all articles through method to be placed in HTML
-  $(function() {
-    //shows rest of article on click
-    $('.expand').on('click', function(){
-      $(this).prev().children().fadeToggle();
-      $(this).html('Read less...');
-    });
+        //shows rest of article on click
+        $('.expand').on('click', function(){
+          $(this).prev().children().fadeToggle();
+          $(this).html('Read less...');
+          console.log("button");
+        });
 
 
-        // Create a dropdown list for Authors. Adapted from Whitney
-    populateDropDown('author', '#authorMenu');
+        // Create a dropdown list for Authors.
+    // populateDropDown('author', '#authorMenu');
 
-        // Create a dropdown list for Categories. Adapted from Whitney
-    populateDropDown('category', '#categoryMenu');
+        // Create a dropdown list for Categories.
+    // populateDropDown('category', '#categoryMenu');
 
         //on change of dropdown Author menu hides all articles but one selected. Adapted from Jessica
+function authorEvent() {
     $('#authorMenu').on('change', function(){
       var author = $(this).val();
       var $article = $('.article');
@@ -98,7 +119,7 @@ function renderArticles(object) {
         }
       });
     });
-
+}
         //on change of dropdown category menu hides all articles but one selected. Adapted from Jessica
     $('#categoryMenu').on('change',function(){
       var category = $(this).val();
@@ -125,14 +146,13 @@ function renderArticles(object) {
     });
 
           //on click shows about me
+  function aboutEvent() {
     $('#about').on('click', function(){
       $('#aboutMe').show();
       $('.article').hide();
       $('#categoryMenu').hide();
       $('#authorMenu').hide();
     });
-  });
-
-
+  }
 
 });

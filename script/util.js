@@ -1,3 +1,5 @@
+var rawData;
+
 //Sort by author in alphabetical order
 var sortByAuthor = function(a, b) {
   if (a.author > b.author) {return 1;}
@@ -20,7 +22,7 @@ var sortByCategory = function(a, b) {
 };
 
 
-//Populates select menu with what ever you pass into it. Adapted from Whitney
+//Populates select menu with what ever you pass into it.
 function populateDropDown(theType, sectionId) {
   var list = [];
   for(var ii = 0; ii < rawData.length; ii++) {
