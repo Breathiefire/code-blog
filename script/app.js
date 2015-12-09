@@ -6,10 +6,26 @@ function usingAjax() {
     url: 'script/blogArticles.JSON',
     success: function(data, status, xhr){
       var eTag = (xhr.getResponseHeader('eTag'));
-      console.log(eTag);
-      var localEtag = localStorage.setItem('ergodicEtag', eTag);
-      if (localEtag != eTag) {
-        //run get JSON
+      console.log("server eTag: " + eTag);
+      var localEtag = localStorage.getItem('ergodicEtag');
+      console.log("local eTag: " + localEtag);
+      if (localEtag) {
+        console.log("Got an etag");
+        if (localEtag != eTag) {
+          console.log("eTag doesn't match");
+          getJsonData(eTag);
+          renderArticles()
+          console.log("loaded from JSON");
+        } else {
+          console.log("Etags match");
+          getLocalCache()
+          renderArticles();
+          console.log("loaded from cache");
+        }
+      } else {
+        console.log("no etag here");
+        getJsonData(eTag);
+        renderArticles()
       }
     }
   });
@@ -17,14 +33,25 @@ function usingAjax() {
 
 usingAjax();
 
+var rawData;
 //gets json object and sets to local storage
-$.getJSON('script/blogArticles.JSON', function(data) {
-  localStorage.setItem("blogData", JSON.stringify(data));
-  var rawData = JSON.parse(localStorage.getItem("blogData"));
+function getJsonData(etagspot) {
+  $.getJSON('script/blogArticles.JSON', function(data) {
+    localStorage.setItem("blogData", JSON.stringify(data));
+    rawData = JSON.parse(localStorage.getItem("blogData"));
+    localStorage.setItem('ergodicEtag', etagspot)
+    console.log(rawData);
+
+  })
+}
+
+function getLocalCache() {
+  rawData = JSON.parse(localStorage.getItem("blogData"));
   console.log(rawData);
+}
 
+function renderArticles(object) {
   $.get('template.html', function(data) {
-
     //compiles templates using Handlebars
     var compilesTemplate = Handlebars.compile(data);
     //Sort by most recent date
@@ -36,10 +63,7 @@ $.getJSON('script/blogArticles.JSON', function(data) {
       $('#articleLocation').append(articleData);
     }
   });
-})
-  //If local eTag is equal to new eTag then use cached json objects
-  //If local eTag is not equal to new eTag then refresh page
-
+}
 
 
   $('.articleBody').each(function(){
@@ -56,11 +80,9 @@ $.getJSON('script/blogArticles.JSON', function(data) {
 
 
         // Create a dropdown list for Authors. Adapted from Whitney
-    blog.rawData.sort(sortByAuthor);
     populateDropDown('author', '#authorMenu');
 
         // Create a dropdown list for Categories. Adapted from Whitney
-    blog.rawData.sort(sortByCategory);
     populateDropDown('category', '#categoryMenu');
 
         //on change of dropdown Author menu hides all articles but one selected. Adapted from Jessica

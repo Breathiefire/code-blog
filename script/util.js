@@ -23,8 +23,8 @@ var sortByCategory = function(a, b) {
 //Populates select menu with what ever you pass into it. Adapted from Whitney
 function populateDropDown(theType, sectionId) {
   var list = [];
-  for(var ii = 0; ii < blog.rawData.length; ii++) {
-    var type = blog.rawData[ii][theType];
+  for(var ii = 0; ii < rawData.length; ii++) {
+    var type = rawData[ii][theType];
     if (list.indexOf(type) === -1) {
       var name = '<option>' + type + '</option>';
       var $html = $(name);
