@@ -31,9 +31,9 @@ $(function() {
     $numWords.append(totalWords);
 
     //Average number of words in all articles
-     $wordLengthArticles.append(totalWords / totalNumArticles);
+    $wordLengthArticles.append(totalWords / totalNumArticles);
 
-     //Average length of word per Author
-     $wordLengthAuthors.append(bodyText.length / totalWords);
+    //Average length of word per Author
+    $wordLengthAuthors.append(bodyText.length / totalWords);
   });
 });
