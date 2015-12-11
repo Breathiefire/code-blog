@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Admin Stats</title>
+</head>
+<body>
+
+<h1>Article Stats</h1>
+<table class="articleStats">
+  <tr>
+    <td>Total number of articles</td>
+    <td id="numArticles"></td>
+  </tr>
+  <tr>
+    <td>Total number of distict authors</td>
+    <td id="numAuthors"></td>
+  </tr>
+  <tr>
+    <td>Total number of words in all articles</td>
+    <td id="numWords"></td>
+  </tr>
+  <tr>
+    <td>Average word length of all articles</td>
+    <td id="wordLengthArticles"></td>
+  </tr>
+  <tr>
+    <td>Average word length by author</td>
+    <td id="wordLengthAuthors"></td>
+  </tr>
+</table>
+
+<script src="script/jquery-2.1.4.min.js"></script>
+<script src="script/handlebars-v4.0.5.js"></script>
+<script src="script/marked.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="script/blogObject.js"></script>
+<script src= "script/util.js"></script>
+<script src="script/app.js"></script>
+<script src="script/scriptStats.js"></script>
+</body>
+</html>

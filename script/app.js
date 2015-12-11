@@ -60,6 +60,7 @@ function getLocalCache() {
 
 function renderArticles(object) {
 var markedRawData = convertMarkdown(rawData);
+
   console.log('Marked data: ', markedRawData[0]);
   $.get('template.html', function(data) {
     //Loops through blog objects and appends them to #articleLocation
@@ -86,10 +87,10 @@ var markedRawData = convertMarkdown(rawData);
   });
 }
 
+
       $('.articleBody').each(function(){
         $(this).children().not('p:first').hide();
       });
-      //Pushes all articles through method to be placed in HTML
 
         //shows rest of article on click
         $('.expand').on('click', function(){
