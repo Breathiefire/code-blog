@@ -1,6 +1,12 @@
 
 $(function() {
 
+  var articles = [];
+
+  webDB.init();
+  webDB.execute('DROP TABLE articles;');
+  webDB.setupTables();
+
   function usingAjax() {
     $.ajax({
       type: 'HEAD',
@@ -18,8 +24,9 @@ $(function() {
             console.log('loaded from JSON');
           } else {
             console.log('Etags match');
-            getLocalCache();
-            renderArticles();
+            // getLocalCache();
+            getJsonData(eTag);
+            // renderArticles();
             console.log('loaded from cache');
           }
         } else {
@@ -32,48 +39,56 @@ $(function() {
 
   usingAjax();
 
+
   var convertMarkdown = function(x) {
+    console.log('LOOK HERE: ', x);
     for (ii = 0; ii < x.length; ii++) {
       if (x[ii].markdown) {
         x[ii].body = marked(x[ii].markdown);
+        delete x[ii].markdown;
       }
     }
     return x;
   };
 
-
   //gets json object and sets to local storage
   function getJsonData(etagspot) {
     $.getJSON('script/blogArticles.JSON', function(data) {
-      localStorage.setItem('blogData', JSON.stringify(data));
-      rawData = JSON.parse(localStorage.getItem('blogData'));
-      // rawData = JSON.parse(localStorage.getItem("blogData"));
+      articles = convertMarkdown(data);
+      webDB.insertAllRecords(articles);
+      webDB.getAllArticles(renderArticles);
+
+      // localStorage.setItem('blogData', JSON.stringify(data));
+      // rawData = JSON.parse(localStorage.getItem('blogData'));
       localStorage.setItem('ergodicEtag', etagspot);
-      renderArticles();
+      // renderArticles();
 
     });
   }
+
 
   function getLocalCache() {
     rawData = JSON.parse(localStorage.getItem('blogData'));
   }
 
-  function renderArticles(object) {
-    var markedRawData = convertMarkdown(rawData);
+  function renderArticles(data) {
+    // var markedRawData = convertMarkdown(rawData);
+    //
+    // console.log('Marked data: ', markedRawData[78]);
 
-    console.log('Marked data: ', markedRawData[0]);
-    $.get('template.html', function(data) {
+
+    $.get('template.html', function(template) {
       //Loops through blog objects and appends them to #articleLocation
-      for (var ii = 0; ii < rawData.length; ii++) {
+      for (var ii = 0; ii < data.length; ii++) {
         //compiles templates using Handlebars
-        var compilesTemplate = Handlebars.compile(data);
+        var compilesTemplate = Handlebars.compile(template);
         //Sort by most recent date
-        rawData.sort(sortByDate);
+        data.sort(sortByDate);
 
-        var articleData = compilesTemplate(markedRawData[ii]);
+        var articleData = compilesTemplate(data[ii]);
         $('#articleLocation').append(articleData);
       }
-
+      //
       populateDropDown('author', '#authorMenu');
       populateDropDown('category', '#categoryMenu');
       aboutEvent();

@@ -45,7 +45,7 @@ webDB.insertAllRecords = function (articles) {
 
 webDB.setupTables = function () {
   html5sql.process(
-    'CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, title VARCHAR(255) NOT NULL, author VARCHAR(255) NOT NULL, authorUrl VARCHAR (255), category VARCHAR(20), publishedOn DATETIME, markdown TEXT NOT NULL);',
+    'CREATE TABLE IF NOT EXISTS articles (id INTEGER PRIMARY KEY, title VARCHAR(255) NOT NULL, author VARCHAR(255) NOT NULL, authorUrl VARCHAR (255), category VARCHAR(20), publishedOn DATETIME, body TEXT NOT NULL);',
     function() {
       // on success
       console.log('Success setting up tables.');
@@ -55,11 +55,12 @@ webDB.setupTables = function () {
 
 webDB.insertRecord = function (a) {
   // insert article record into database
+
   html5sql.process(
     [
       {
-        'sql': 'INSERT INTO articles (title, author, authorUrl, category, publishedOn, markdown) VALUES (?, ?, ?, ?, ?, ?);',
-        'data': [a.title, a.author, a.authorUrl, a.category, a.publishedOn, a.markdown],
+        'sql': 'INSERT INTO articles (title, author, authorUrl, category, publishedOn, body) VALUES (?, ?, ?, ?, ?, ?);',
+        'data': [a.title, a.author, a.authorUrl, a.category, a.publishedOn, a.body],
       }
     ],
     function () {
@@ -72,6 +73,16 @@ webDB.execute = function (sql, callback) {
   callback = callback || function() {};
   html5sql.process(
     sql,
+    function (tx, result, resultArray) {
+      callback(resultArray);
+    }
+  );
+};
+
+webDB.getAllArticles = function (callback) {
+  callback = callback || function() {};
+  html5sql.process(
+    'SELECT * FROM articles;',
     function (tx, result, resultArray) {
       callback(resultArray);
     }
