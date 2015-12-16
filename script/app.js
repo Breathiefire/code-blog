@@ -1,6 +1,3 @@
-
-$(function() {
-
 function usingAjax() {
   $.ajax({
     type: 'HEAD',
@@ -30,7 +27,7 @@ function usingAjax() {
   });
 }
 
-usingAjax();
+// usingAjax();
 
 var convertMarkdown = function(x) {
   for (ii = 0; ii < x.length; ii++) {
@@ -44,7 +41,7 @@ var convertMarkdown = function(x) {
 
 //gets json object and sets to local storage
 function getJsonData(etagspot) {
-  $.getJSON('script/blogArticles.JSON', function(data) {
+  $.getJSON('blogArticles.json', function(data) {
     localStorage.setItem("blogData", JSON.stringify(data));
     rawData = JSON.parse(localStorage.getItem('blogData'));
     // rawData = JSON.parse(localStorage.getItem("blogData"));
@@ -76,7 +73,6 @@ var markedRawData = convertMarkdown(rawData);
 
     populateDropDown('author', '#authorMenu');
     populateDropDown('category', '#categoryMenu');
-    aboutEvent();
     authorEvent();
     //Highlight function
     $(document).ready(function() {
@@ -147,13 +143,11 @@ function authorEvent() {
     });
 
           //on click shows about me
-  function aboutEvent() {
-    $('#about').on('click', function(){
-      $('#aboutMe').show();
-      $('.article').hide();
-      $('#categoryMenu').hide();
-      $('#authorMenu').hide();
-    });
-  }
-
-});
+  // function aboutEvent() {
+  //   $('#about').on('click', function(){
+  //     $('#aboutMe').show();
+  //     $('.article').hide();
+  //     $('#categoryMenu').hide();
+  //     $('#authorMenu').hide();
+  //   });
+  // }
