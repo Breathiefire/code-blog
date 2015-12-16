@@ -41,7 +41,7 @@ var convertMarkdown = function(x) {
 
 //gets json object and sets to local storage
 function getJsonData(etagspot) {
-  $.getJSON('blogArticles.json', function(data) {
+  $.getJSON('script/blogArticles.json', function(data) {
     localStorage.setItem("blogData", JSON.stringify(data));
     rawData = JSON.parse(localStorage.getItem('blogData'));
     // rawData = JSON.parse(localStorage.getItem("blogData"));
