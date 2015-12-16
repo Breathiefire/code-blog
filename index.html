@@ -5,13 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8"></meta>
   <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/default.min.css">
-
-
-  <script id='test' type='text/x-handlebars-template'>
-      This is an author {{author}}
-  </script>
+  <!-- <script src="/script/page.js"></script> -->
+  <base href="/">
 </head>
 <body>
   <div id='authorTest'></div>
@@ -22,10 +19,10 @@
   <nav class="nav">
     <ul>
         <div id= 'leftNavBox'>
-          <li id="home"><a href='#'>Blog</a></li>
+          <li id="home"><a href='showBlog'>Blog</a></li>
         </div>
         <div id= 'middleNavBox'>
-          <li id="about"><a href='#'>About</a></li>
+          <li id="about"><a href='about'>About</a></li>
         </div>
         <div id= 'rightNavBox'>
           <li><a id="twitter" href="https://twitter.com/KayOuchida">Twitter</a></li>
@@ -68,15 +65,17 @@
   </section>
 </script> -->
 <div id='articleLocation'></div>
-  <script src="script/jquery-2.1.4.min.js"></script>
-  <script src="script/handlebars-v4.0.5.js"></script>
-  <script src="script/marked.min.js"></script>
+  <script src="/script/jquery-2.1.4.min.js"></script>
+  <script src="/script/handlebars-v4.0.5.js"></script>
+  <script src="/script/marked.min.js"></script>
+  <script src="/script/page.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
-  <script src="script/blogObject.js"></script>
-  <!-- <script src="script/blogArticles.js"></script> -->
-  <script src= "script/util.js"></script>
-  <script src="script/app.js"></script>
+  <script src="/script/blogObject.js"></script>
+  <script src= "/script/util.js"></script>
+  <script src="/script/app.js"></script>
+  <script src="/script/articleController.js"></script>
+  <!-- <script src="/script/router.js"></script> -->
 
 </body>
 

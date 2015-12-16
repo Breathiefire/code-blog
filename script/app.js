@@ -1,4 +1,3 @@
-
 $(function() {
 
 function usingAjax() {
@@ -18,7 +17,7 @@ function usingAjax() {
           console.log("loaded from JSON");
         } else {
           console.log("Etags match");
-          getLocalCache()
+          getLocalCache();
           renderArticles();
           console.log("loaded from cache");
         }
@@ -138,22 +137,11 @@ function authorEvent() {
           //Hides about me section
     $('#aboutMe').hide();
 
-          //On click shows aricles
+          // On click shows aricles
     $('#home').on('click', function(){
       $('#aboutMe').hide();
       $('.article').show();
       $('#categoryMenu').show();
       $('#authorMenu').show();
     });
-
-          //on click shows about me
-  function aboutEvent() {
-    $('#about').on('click', function(){
-      $('#aboutMe').show();
-      $('.article').hide();
-      $('#categoryMenu').hide();
-      $('#authorMenu').hide();
     });
-  }
-
-});
